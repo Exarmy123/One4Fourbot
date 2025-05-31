@@ -1,10 +1,14 @@
 import os
+import telebot
 
-def start_bot():
+BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+bot = telebot.TeleBot(BOT_TOKEN)
+
+@bot.message_handler(commands=['start'])
+def send_welcome(message):
+    user = message.from_user
+    bot.reply_to(message, f"👋 नमस्ते {user.first_name}! Welcome to One4FourBit Game Bot!")
+
+if __name__ == "__main__":
     print("Bot is starting...")
-    # Place Telegram bot logic here
-
-if __name__ == "__main__":
-    start_bot()
-if __name__ == "__main__":
     bot.infinity_polling()
