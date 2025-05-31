@@ -1,17 +1,14 @@
+from dotenv import load_dotenv
 import os
-import telebot
-from supabase import create_client, Client
-from datetime import datetime
-import uuid
 
-# Environment Variables
-BOT_TOKEN    = os.getenv("TELEGRAM_BOT_TOKEN")
+load_dotenv()
+
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+ADMIN_ID = int(os.getenv("ADMIN_ID"))
+USDT_ADDRESS = os.getenv("USDT_ADDRESS")
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
-
-bot = telebot.TeleBot(BOT_TOKEN)
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
-
+TRON_API = os.getenv("TRON_API")
 # Fetch your bot’s real username once
 BOT_USERNAME = bot.get_me().username  # e.g. "One4FourBitBot"
 
